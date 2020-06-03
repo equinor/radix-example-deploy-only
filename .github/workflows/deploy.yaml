@@ -12,13 +12,9 @@ jobs:
     env:
       APP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.K8S_CREDENTIALS }}
     steps:
-      - uses: actions/checkout@v1
-      - name: Set image tag
-        run: |
-          echo ::set-env name=IMAGE_TAG::latest
       - name: Build
         run: |
-          docker build -t docker.pkg.github.com/equinor/radix-example-arm-template/api:latest ./todoapi/
+          docker build -t docker.pkg.github.com/equinor/radix-example-arm-template/api:latest ./helloworld/
       - name: Push the image to GPR
         run: |
           echo ${{ secrets.PRIVATE_TOKEN }} | docker login docker.pkg.github.com -u JoakimHagen --password-stdin
@@ -36,7 +32,6 @@ jobs:
       - name: Restart on Radix to update latest image
         uses: equinor/radix-github-actions@master
         with:
-          # environment and component name are hardcoded for the latest deployment
           args: >
             restart component
             --from-config
