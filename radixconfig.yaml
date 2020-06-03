@@ -1,0 +1,30 @@
+apiVersion: radix.equinor.com/v1
+kind: RadixApplication
+metadata:
+  name: radix-example-deploy-only
+spec:
+  environments:
+  - name: demo
+    build:
+      from: master
+  components:
+  - name: helloworld
+    image: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:{imageTagName}
+    ports:
+    - name: http
+      port: 3000
+    public: true
+    environmentConfig:
+    - environment: demo
+      imageTagName: latest
+      horizontalScaling:
+        minReplicas: 1
+        maxReplicas: 3
+      monitoring: false
+      resources:
+        requests:
+          memory: 10M
+          cpu: 5m
+        limits:
+          memory: 20M
+          cpu: 50m
