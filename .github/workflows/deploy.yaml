@@ -19,8 +19,8 @@ jobs:
         run: |
           echo ${{ secrets.PRIVATE_TOKEN }} | docker login docker.pkg.github.com -u JoakimHagen --password-stdin
           docker push $IMAGE
-      - using: equinor/radix-github-actions@master
       - name: Deploy to Radix
+        uses: equinor/radix-github-actions@master
         with:
           args: >
             create job deploy
@@ -30,6 +30,7 @@ jobs:
             -f
       # restart is required to update running components from static image-tags
       - name: Restart on Radix to update latest image
+        uses: equinor/radix-github-actions@master
         with:
           args: >
             restart component
