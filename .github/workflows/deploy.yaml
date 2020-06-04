@@ -13,7 +13,7 @@ jobs:
       IMAGE: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:latest
     steps:
       - name: debug
-        run: echo ls -al
+        run: ls -al
       - name: Build with docker
         run: |
           docker build -t $IMAGE ./helloworld/
