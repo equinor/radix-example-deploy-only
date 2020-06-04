@@ -27,4 +27,4 @@ COPY --from=build /go/src/github.com/equinor/radix-example-deploy-only/main .
 EXPOSE 8080
 
 # Command run on docker
-CMD [ "/bin/sh", "-c", "/usr/src/app/main" ]
+CMD [ "sh", "-c", "/usr/src/app/main" ]
