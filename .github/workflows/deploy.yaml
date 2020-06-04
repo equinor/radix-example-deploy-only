@@ -12,7 +12,9 @@ jobs:
     env:
       IMAGE: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:latest
     steps:
-      - name: Build
+      - name: debug
+        run: echo $IMAGE
+      - name: Build with docker
         run: |
           docker build -t $IMAGE ./helloworld/
       - name: Push the image to GPR
