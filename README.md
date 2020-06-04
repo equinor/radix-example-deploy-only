@@ -2,7 +2,7 @@
 
 A demonstration of automated deploy-only workflow in Radix
 
-![.github/workflows/deploy.yaml](https://github.com/equinor/radix-example-deploy-only/workflows/.github/workflows/deploy.yaml/badge.svg)
+![CICD](https://github.com/equinor/radix-example-deploy-only/workflows/CICD/badge.svg)
 
 - Building is done by github actions
 - Deploy is done by Radix through CLI command
