@@ -9,7 +9,7 @@ spec:
       from: master
   components:
   - name: helloworld
-    image: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:latest
+    image: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:{imageTagName}
     ports:
     - name: http
       port: 8080
