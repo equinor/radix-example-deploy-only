@@ -9,10 +9,10 @@ spec:
       from: master
   components:
   - name: helloworld
-    image: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:{imageTagName}
+    image: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:latest
     ports:
     - name: http
-      port: 3000
+      port: 8080
     public: true
     environmentConfig:
     - environment: demo
@@ -28,3 +28,7 @@ spec:
         limits:
           memory: 20M
           cpu: 50m
+  privateImageHubs:
+    docker.pkg.github.com:
+      username: JoakimHagen
+      email: johagen@equinor.com
