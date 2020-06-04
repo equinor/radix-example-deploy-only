@@ -13,9 +13,10 @@ jobs:
       IMAGE: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:latest
     steps:
       - name: Build with docker
-        working-directory: ./helloworld
+        run: ls -al ../
+      - name: Build with docker
         run: |
-          docker build -t $IMAGE
+          docker build -t $IMAGE .
       - name: Push the image to GPR
         run: |
           echo ${{ secrets.PRIVATE_TOKEN }} | docker login docker.pkg.github.com -u JoakimHagen --password-stdin
