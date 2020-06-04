@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:latest
+      APP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.K8S_CREDENTIALS }}
     steps:
       - uses: actions/checkout@v1 # retrieve the source files
       - name: Build with docker
@@ -20,6 +21,7 @@ jobs:
         run: |
           echo ${{ secrets.PRIVATE_TOKEN }} | docker login docker.pkg.github.com -u JoakimHagen --password-stdin
           docker push $IMAGE
+      # authentication with Radix requires the APP_SERVICE_ACCOUNT_TOKEN environment variable
       - name: Deploy to Radix
         uses: equinor/radix-github-actions@master
         with:
