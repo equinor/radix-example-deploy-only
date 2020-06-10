@@ -10,6 +10,9 @@ spec:
   components:
   - name: helloworld
     image: docker.pkg.github.com/equinor/radix-example-deploy-only/helloworld:{imageTagName}
+    # Because the tag will not change
+    alwaysPullImageOnDeploy: true
+    # ---
     ports:
     - name: http
       port: 8080
