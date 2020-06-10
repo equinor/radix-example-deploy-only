@@ -7,7 +7,7 @@ A demonstration of automated deploy-only workflow in Radix
 - Building is done by github actions
 - Deploy is done by Radix through CLI command
 
-The deploy strategy used here is limited to a single static tag `latest`. This require no changes to the `radixconfig.yaml` file to deploy new builds but will also not cause existing deployments to update their image when new builds are pushed.
+The deploy strategy used here is limited to a single static tag `latest`. This require no changes to the `radixconfig.yaml` file to deploy new builds and will require a flag `alwaysPullImageOnDeploy` to always pull new image when deploy is requested.
 
 ## Workflow sequence
 
